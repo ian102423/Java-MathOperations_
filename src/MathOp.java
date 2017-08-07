@@ -6,33 +6,37 @@ import java.util.Scanner;
 
 public class MathOp {
     public static void main(String[] args) {
-
-        System.out.println(twoStringNum());
+        double firstNum = getNumber();
+        double secondNum = getNumber();
+        twoStringNum(firstNum, secondNum);
     }
 
-    public static String twoStringNum() {
+    public static void twoStringNum(double operand1, double operand2) {
         Scanner scanner1 = new Scanner(System.in);
+        double sum = operand1 + operand2;
+        double difference = operand1 - operand2;
+        double division = operand1 / operand2;
+        double multiplycation = operand1 * operand2;
+        double remainder = operand1 % operand2;
+        System.out.println("Sum: " + sum + "\nDiff: " + difference + "\nDiv: " + division + "\nMulti: " + multiplycation + "\nRemainder: " + remainder);
+    }
 
-        while (true) try {
-            System.out.println("Please enter the first number");
-            String operand1 = scanner1.nextLine();
-            System.out.println("Please enter the second number");
-            String operand2 = scanner1.nextLine();
-            double num1 = Double.parseDouble(operand1);
-            double num2 = Double.parseDouble(operand2);
-            double sum = num1 + num2;
-            double difference = num1 - num2;
-            double division = num1 / num2;
-            double multiplycation = num1 * num2;
-            double remainder = num1 % num2;
-            String showResults = "Sum: " + sum + " Subtraction: " + division + " Multiply: " + multiplycation + " remainder: " + remainder;
-            return showResults;
-        } catch (NumberFormatException ignore) {
-            System.out.println(ignore);
-            System.out.println();
-            System.out.println("RETURNING TO THE TOP, ONLY PUT INT/DOUBLE TYPE");
+    private static double getNumber() {
+        System.out.println("Put # please");
+        Scanner scanner = new Scanner(System.in);
+        double userInput;
+        while (true) {
+            try {
+                userInput = Double.parseDouble(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage() + "Invalid Input");
+            }
         }
 
-
+        return userInput;
     }
+
+
 }
+
